@@ -1,31 +1,16 @@
-> **Note**: This branch (master) contains a skeleton without any app code, perfect for creating a _new_ application or challenge. If you're looking for an example app built with this skeleton, take a look at the [example](/../..//tree/example) branch which includes basic CRUD and RSpec tests.
+### Passworder
 
-### Purpose
-The Sinatra Skeleton:
+1. Log on or register
+2. Enter student names
+3. Click DONE when you have finished adding names
+4. The app will generate passwords based on about 90 randomly selected words and random numbers
+5. You can text the name/password list to a teacher
 
-1. Provides a foundation for building challenges or creating a new Sinatra application.
-2. Demonstrates a reasonable set of practices around building Sinatra applications.
-3. Eases the transition to Rails for Dev Bootcamp students
-
-### Quickstart
-
-1.  `bundle install`
-2.  `shotgun config.ru`
-
-As needed, create models & migrations with the `rake` tasks:
-
-```
-rake generate:migration  # Create an empty migration in db/migrate, e.g., rake generate:migration NAME=create_tasks
-rake generate:model      # Create an empty model in app/models, e.g., rake generate:model NAME=User
-```
-
-### Contributing
-
-We would love for you to help make the skeleton more awesome, There are three ways to contribute:
-
-1. Ask for a bug fix or enhancement!
-2. Submit a pull request for a bug fix or enhancement!
-3. Code review an open pull request!
-
-Be prepared to give and receive specific, actionable, and kind feedback!
-# passworder
+### User Story
+- A user can register to use the site.
+- A user can log on to the site once registered.
+- A user can add student names to the database.
+- A user can automatically generate easy-to-remember passwords for the students.
+- A user can text the names and passwords to a teacher or other person.
+- A user can send the name/password for a selected student to a teacher.
+- A user can delete a student from the database.
