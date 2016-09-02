@@ -1,0 +1,17 @@
+<nav>
+  <ul class="nav nav-pills pull-right">
+<% if current_user %>
+  <li><a href="/users/<%= current_user.id %> ">Profile Page</a></li>
+
+  <form action="/sessions" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input class="btn btn-lg btn-success" type="submit" value="Logout">
+  </form>
+
+<% else %>
+  <li><a href="/sessions/new">log on to account</a></li>
+  <li><a href="/users/new">create user account</a></li>
+<% end %>
+
+  </ul>
+</nav>
