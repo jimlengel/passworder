@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'dotenv'
+gem 'twilio-ruby'
+
 # PostgreSQL driver
 gem 'pg'
 
@@ -25,3 +28,5 @@ group :test, :development do
   gem 'factory_girl'
   gem 'faker'
 end
+
+

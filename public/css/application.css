@@ -1,0 +1,36 @@
+#front-image {
+  max-width:80%;
+}
+
+.students-table {
+  width: 50%;
+}
+
+.students-table td {
+    border: 1px solid black;
+  padding: 5px;
+  text-align: left;
+}
+
+.students-table th {
+    border: 1px solid black;
+  padding: 5px;
+  text-align: left;
+}
+
+.small-link {
+  font-size: .8em;
+}
+
+.div-right {
+  float: right;
+}
+
+input[type=submit] {
+    padding:5px 15px;
+    background:#ccc;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}

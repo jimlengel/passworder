@@ -1,0 +1,43 @@
+<div>&nbsp;</div>
+<div>
+  <form action="/students/send" method="post">
+  <input type="text" name="text_number">
+  <input type="submit" value="send">
+  <!-- <button type="button" class="btn btn-warning">send</button> -->
+  </form>
+</div>
+<div>
+<% if @errors %>
+  <% @errors.each do |error| %>
+    <%= error %>
+  <% end %>
+<% end %>
+</div>
+<div>&nbsp;</div>
+<div>
+  <table class="students-table">
+    <tr>
+    <th>Name</th>
+    <th>Password</th>
+    </tr>
+    <% @students.each do |student| %>
+    <tr><td><%= student.name %>
+
+<form action="/students/<%= student.id %>" method="post">
+<input name="_method" type="hidden" value="delete">
+<input type="submit" value="delete student">
+</form>
+
+  </td>
+    <td><%= student.password %>
+<form action="/students/<%= student.id %>" method="get">
+<input type="submit" value="change password">
+</form>
+
+    </td></tr>
+    <% end %>
+  </table>
+</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+
