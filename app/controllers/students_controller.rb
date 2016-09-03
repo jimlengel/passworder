@@ -1,3 +1,13 @@
+get '/students' do
+  @students = Student.all
+  @students.each do |s|
+    p s.name
+    p s.password
+  end
+  erb :'students/index'
+end
+
+
 get '/students/new' do
   erb :'students/new'
 end
@@ -43,4 +53,31 @@ get '/students/words' do
   end
   erb :'students/new'
 end
+
+get '/students/:id' do
+  #gets params from url
+  @student = Student.find(params[:id])
+  erb :'students/show'
+end
+
+put '/students/:id' do
+  @student = Student.find(params[:id])
+  @student.assign_attributes(params[:student])
+  if @student.save
+    redirect '/students'
+  else
+    erb :'students/edit'
+  end
+
+end
+
+delete '/students/:id' do
+  @student = Student.find(params[:id])
+  @student.destroy
+  redirect '/students'
+
+end
+
+
+
 

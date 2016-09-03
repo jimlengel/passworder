@@ -1,0 +1,15 @@
+<h4>Student Profile Page</h4>
+<div>Student Name: <%= @student.name %> </div>
+<div>Current Password: <strong><%= @student.password %></strong> </div>
+<h3>&nbsp;</h3>
+<h4>Enter the new password</h4>
+
+<form action="/students/<%= @student.id %>" method="post">
+  <input type="hidden" name="_method" value="PUT">
+  <div class="form-group" >
+    <input type="text" class="form-control" name="student[password]" placeholder="new password"></div>
+  <div class="form-group">
+    <input  type="submit" value="submit"></div>
+</form>
+
+<a href="/students">See all students</a>

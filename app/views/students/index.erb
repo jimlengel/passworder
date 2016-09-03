@@ -1,0 +1,18 @@
+<table class="students-table">
+  <tr>
+  <th>Name</th>
+  <th>Password</th>
+  </tr>
+  <% @students.each do |student| %>
+  <tr><td><%= student.name %>
+
+    <form action="/students/<%= student.id %>" method="post">
+      <input type="hidden" name="_method" value="DELETE">
+      <button type="button" class="btn btn-xs btn-link">delete student</button>
+    </form>
+
+</td>
+  <td><%= student.password %> <br><a class="small-link" href="/students/<%= student.id %>">change password</a></td></tr>
+  <% end %>
+</table>
+
