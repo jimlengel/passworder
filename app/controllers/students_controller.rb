@@ -1,6 +1,7 @@
 get '/students' do
   @students = Student.all
   @students.each do |s|
+    p s.id
     p s.name
     p s.password
   end
@@ -15,19 +16,40 @@ end
 post '/students/new' do
   @student = Student.new(params[:student])
   @students = Student.all
+
   if @student.save
     'yes'
     # @message = "Student added."
-    erb :"students/new"
     # erb :"/students/display_emails"
+
+    word_list = []
+    File.open('spelling.txt').each_line do |word|
+      p word.chomp
+      word_list << word.chomp
+    end
+
+    @students.each do |student|
+      if student.password == nil
+        p student.id
+        p "about to assign ..................................."
+        student.password = word_list[rand(0..90)] + rand(100..999).to_s
+        student.save
+        p "student saved ......................................."
+      else
+        p student.id
+        p "did not assign"
+      end
+    end
+    erb :'/students/index'
   else
-    p 'no'
+    p 'THIS STUDENT DID NOT SAVE .............................'
   #   @errors = @entry.errors.full_messages
   #   erb :'entries/new'
     ##############################
     ### THIS NEEDS TO BE FIXED ###
     ##############################
   end
+
 end
 
 get '/students/words' do
@@ -68,14 +90,46 @@ put '/students/:id' do
   else
     erb :'students/edit'
   end
-
 end
 
 delete '/students/:id' do
   @student = Student.find(params[:id])
   @student.destroy
-  redirect '/students'
+  @students = Student.all
+  erb :'/students/index'
+end
 
+post '/students/send' do
+  @students = Student.all
+  all_students = Student.all
+  message = ""
+  # message = "Here you go\n"
+  all_students.each do |student|
+    message += student.name
+    message += " = "
+    message += student.password
+    message += "\n"
+  end
+
+  to_number = "+" + params[:text_number].to_s
+
+  account_sid = ENV['account_sid']
+  auth_token = ENV['auth_token']
+  p account_sid
+  p auth_token
+
+  @client = Twilio::REST::Client.new account_sid, auth_token
+  message = @client.account.messages.create(:body => message,
+    :to => to_number,    # Replace with your phone number
+    :from => "+14158516988")  # Replace with your Twilio number
+  if message.sid
+    @errors = ['Message sent.']
+  else
+    @errors = ['The message was not sent.']
+  end
+  p '0000000000000000000000000000000000000000000'
+  p @students
+  erb :'/students/index'
 end
 
 
