@@ -1,3 +1,5 @@
+require 'twilio-ruby'
+
 get '/students' do
   @students = Student.all
   erb :'students/index'
@@ -92,8 +94,9 @@ end
 post '/students/send' do
   @students = Student.all
   all_students = Student.all
+
+  # compose the message
   message = ""
-  # message = "Here you go\n"
   all_students.each do |student|
     message += student.name
     message += " = "
@@ -102,24 +105,20 @@ post '/students/send' do
   end
 
   to_number = "+" + params[:text_number].to_s
-
+  # send the message using the Twilio credentials
   account_sid = ENV['account_sid']
   auth_token = ENV['auth_token']
-  p account_sid
-  p auth_token
-
+  
   @client = Twilio::REST::Client.new account_sid, auth_token
   message = @client.account.messages.create(:body => message,
-    :to => to_number,    # Replace with your phone number
-    :from => "+14158516988")  # Replace with your Twilio number
+    :to => to_number,
+    :from => "+14158516988") # Twilio number
   if message.sid
     @errors = ['Message sent.']
   else
     @errors = ['The message was not sent.']
   end
-  p '0000000000000000000000000000000000000000000'
-  p @students
-  erb :'/students/index'
+    erb :'/students/index'
 end
 
 
