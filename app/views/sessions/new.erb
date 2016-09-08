@@ -1,4 +1,4 @@
-<h1>Login Page</h1>
+<h3>Login Page</h3>
 <% if @errors %>
    <% @errors.each do |error| %>
      <p><%= error %></p>
@@ -8,6 +8,6 @@
 <form action="/sessions" method="POST">
   <input type='text' name='username' placeholder="username">
   <input type='password' name='password' placeholder="password">
-  <input type='submit' value='Login'>
+  <input type='submit' value='Login' class="btn btn-info">
 </form>
 

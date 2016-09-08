@@ -1,7 +1,7 @@
 <nav>
   <ul class="nav nav-pills pull-right">
 <% if current_user %>
-  <li><a href="/users/<%= current_user.id %> ">Profile Page</a></li>
+  <li><a href="/users/<%= current_user.id %> ">profile</a></li>
 
   <form action="/sessions" method="POST">
     <input type="hidden" name="_method" value="DELETE">
