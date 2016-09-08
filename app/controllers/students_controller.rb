@@ -25,27 +25,23 @@ post '/students/new' do
     @students.each do |student|
       # if there is no password for this student, generate one.
       if student.password == nil
-        p student.id
-        p "about to assign ..................................."
         student.password = word_list[rand(0..90)] + rand(100..999).to_s
         student.save
-        p "student saved ......................................."
       else
         # if there is a password for this student, do not generate one.
-        p student.id
-        p "did not assign"
       end
     end
     erb :'/students/index'
   else
-    p 'THIS STUDENT DID NOT SAVE .............................'
     @errors = @entry.errors.full_messages
+    erb :'/students/new'
   end
 
 end
 
 get '/students/words' do
-  #load external file
+  # this is not being used. erase it later.
+  
   @students = Student.all
 
   word_list = []
@@ -85,10 +81,14 @@ put '/students/:id' do
 end
 
 delete '/students/:id' do
-  @student = Student.find(params[:id])
-  @student.destroy
-  @students = Student.all
-  erb :'/students/index'
+    @student = Student.find(params[:id])
+  if request.xhr?
+    erb :'/students/_delete', layout: false, locals: { student: @student }
+  else
+    @student.destroy
+    @students = Student.all
+    erb :'/students/index'
+  end
 end
 
 post '/students/send' do

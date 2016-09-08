@@ -1,4 +1,4 @@
-<a href="/students/new">add students</a><br>
+<a href="/students/new">+ add students</a><br>
 <% if @students.length > 0 %>
   <div>&nbsp;</div>
   <div>
@@ -16,18 +16,18 @@
   <% end %>
   </div>
   <div>&nbsp;</div>
-  <div>
+  <div class="student-table">
     <table class="table" width="50%">
       <tr>
       <th>Name</th>
       <th>Password</th>
       </tr>
       <% @students.each do |student| %>
-      <tr><td><%= student.name %>
+      <tr><td class="student" id="<%= student.id %>"><%= student.name %>
 
-        <form action="/students/<%= student.id %>" method="post">
+        <form id="delete-form" action="/students/<%= student.id %>" method="post">
         <input name="_method" type="hidden" value="delete">
-        <input type="submit" class="btn btn-default btn-xs" value="delete student">
+        <input type="submit" class="btn btn-default btn-xs" id="delete" value="delete student">
         </form>
 
     </td>
