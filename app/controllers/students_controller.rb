@@ -80,15 +80,23 @@ put '/students/:id' do
   end
 end
 
+get '/students/:id/info' do
+  @student = Student.find(params[:id])
+  p "*"*66
+  p @student
+  if request.xhr?
+    erb :'/students/_details', layout: false, locals: { student: @student }
+  else
+    redirect '/students'
+  end
+end
+
+
 delete '/students/:id' do
     @student = Student.find(params[:id])
-  if request.xhr?
-    erb :'/students/_delete', layout: false, locals: { student: @student }
-  else
     @student.destroy
     @students = Student.all
     erb :'/students/index'
-  end
 end
 
 post '/students/send' do

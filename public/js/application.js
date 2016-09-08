@@ -5,21 +5,26 @@ $(document).ready(function() {
 });
 
 function showStudent(){
-  $('.student-table').on('click', '#delete', function(e){
+  $('.student-table').on('click', '#detail', function(e){
     e.preventDefault();
-    alert('hi');
-    var deleteUrl = $('#delete-form').attr('action');
-    alert(deleteUrl);
+    var deleteUrl = $(this).parent().attr('action');
+    
+    // alert(deleteUrl);
 
     var request = $.ajax({
       url: deleteUrl,
-      method: 'delete'
+      method: 'get'
       })
 
     request.done(function(res){
       // console.log(res);
-      $('#post-list').prepend(res);
-      $('#new-post-form').find("input[type=text], textarea").val("");
+      $("#detail-area").html(res);
+
+
+
+
+      // $('#post-list').prepend(res);
+      // $('#new-post-form').find("input[type=text], textarea").val("");
     })
 
     // request.fail(function(res){
