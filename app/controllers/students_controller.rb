@@ -1,10 +1,5 @@
 get '/students' do
   @students = Student.all
-  @students.each do |s|
-    p s.id
-    p s.name
-    p s.password
-  end
   erb :'students/index'
 end
 
@@ -18,10 +13,7 @@ post '/students/new' do
   @students = Student.all
 
   if @student.save
-    'yes'
-    # @message = "Student added."
-    # erb :"/students/display_emails"
-
+    
     word_list = []
     File.open('spelling.txt').each_line do |word|
       p word.chomp
@@ -29,6 +21,7 @@ post '/students/new' do
     end
 
     @students.each do |student|
+      # if there is no password for this student, generate one.
       if student.password == nil
         p student.id
         p "about to assign ..................................."
@@ -36,6 +29,7 @@ post '/students/new' do
         student.save
         p "student saved ......................................."
       else
+        # if there is a password for this student, do not generate one.
         p student.id
         p "did not assign"
       end
@@ -43,11 +37,7 @@ post '/students/new' do
     erb :'/students/index'
   else
     p 'THIS STUDENT DID NOT SAVE .............................'
-  #   @errors = @entry.errors.full_messages
-  #   erb :'entries/new'
-    ##############################
-    ### THIS NEEDS TO BE FIXED ###
-    ##############################
+    @errors = @entry.errors.full_messages
   end
 
 end

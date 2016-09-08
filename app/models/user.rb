@@ -2,6 +2,8 @@ require 'bcrypt'
 
 class User < ActiveRecord::Base
 
+  has_many :students
+
   include BCrypt
 
   validates_presence_of :first_name
