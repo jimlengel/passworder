@@ -28,7 +28,7 @@ Passworder is a web app designed to give a school administrator the ability to e
 
 ### The Team
 
-This was a solo project by Jim Lengel [https://github.com/jimlengel]
+This was a solo project by Jim Lengel [github.com/jimlengel](https://github.com/jimlengel)
 
 
 ### External Link to Game
@@ -38,13 +38,13 @@ This was a solo project by Jim Lengel [https://github.com/jimlengel]
 
 ### The Stack
 
-ActiveRecord
-Ruby
-JavaScript
-JQuery
-CSS
-HTML
-GitHub
+- ActiveRecord
+- Ruby
+- JavaScript
+- JQuery
+- CSS
+- HTML
+- GitHub
 
 
 ### Copyright and Licensing Information
