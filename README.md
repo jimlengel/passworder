@@ -33,7 +33,7 @@ This was a solo project by Jim Lengel [https://github.com/jimlengel]
 
 ### External Link to Game
 
-[passworder-app.herokuapp.com]
+[passworder-app.herokuapp.com](http://passworder-app.herokuapp.com)
 
 
 ### The Stack
@@ -52,3 +52,19 @@ GitHub
 Passworder is available under the MIT license.
 
 
+### Screen Shots
+
+Welcome Page
+![Welcome Image](01.png?raw=true "Student Password Generator")
+
+Create a new user profile.
+![Create a New User](02.png?raw=true "Student Password Generator")
+
+Show all students or add a student.
+![User Profile Page](03.png?raw=true "Student Password Generator")
+
+Add a student to the database.
+![Add Students](04.png?raw=true "Student Password Generator")
+
+Send text message with students' info, delete a student, or change a password.
+![Send Text Message](05.png?raw=true "Student Password Generator")
